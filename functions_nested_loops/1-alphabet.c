@@ -1,20 +1,19 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
- * main - Entry point
+ * print_alphabet - print alphabet in lowercase to stdout
  *
- * Description: Prints the alphabet in lowercase
- *
- * Return: Always 0 (Success)
+ * Return: void
  */
-int main(void)
+
+void print_alphabet(void)
 {
-int c;
-c = 97;
-while (c <= 122)
-{
-_putchar(c);
-c++;
+	int start = 97;
+
+	while (start <= 122)
+	{
+		_putchar(start);
+		start++;
+	}
+	_putchar('\n');
 }
-_putchar('\n');
-return (0);
