@@ -2,43 +2,53 @@
 #include <stdlib.h>
 
 /**
- * str_concat - Concat two string.
- * @s1: Firt string to concat.
- * @s2: Second string to concat.
+ * str_concat - concatenates two strings
  *
- * Return: Sucess pointer, else NULL.
+ * @s1: the first string
+ * @s2: the second string
+ *
+ * Return: a pointer to the newly concatenated string
  */
+
 char *str_concat(char *s1, char *s2)
 {
-	int len1, len2, maxLen;
-	int i = 0;
-	int o = 0;
-	char *ptr;
+        int s1_len = 0, s2_len = 0, i = 0, j = 0;
+        char *str;
 
-	len1 = strlen(s1);
-	len2 = strlen(s2);
-	maxLen = len1 + len2 + 1;
+        if (s1 == NULL)
+        {
+                s1_len = 1;
+        }
+        else if (s2 == NULL)
+        {
+                s2_len = 1;
+        }
+        else
+        {
+                while (s1[s1_len])
+                {
+                        s1_len++;
+                }
 
-	ptr = malloc(sizeof(char) * maxLen);
+                while (s2[s2_len])
+                {
+                        s2_len++;
+                }
+        }
 
-	if (ptr == NULL)
-	{
-		free(ptr);
-		return (NULL);
-	}
+        str = (char *) malloc((sizeof(char) * s1_len) + (sizeof(char) * s2_len) + 1);
 
-	while (i < len1)
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-
-	while (o < len2)
-	{
-		ptr[i] = s2[o];
-		i++;
-		o++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+        if (str == NULL)
+        {
+                return (NULL);
+        }
+        for (; i < s1_len; i++)
+        {
+                str[i] = s1[i];
+        }
+        for (; j < s2_len; j++, i++)
+        {
+                str[i] = s2[j];
+        }
+        return (str);
 }
