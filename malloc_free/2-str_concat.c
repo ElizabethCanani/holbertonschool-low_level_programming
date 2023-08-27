@@ -1,44 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *str_concat(char *, char *);
-
 /**
- * main - check the code .
+ * str_concat - Concat two string.
+ * @s1: Firt string to concat.
+ * @s2: Second string to concat.
  *
- * Return: Always 0.
+ * Return: Sucess pointer, else NULL.
  */
-int main(void)
+char *str_concat(char *s1, char *s2)
 {
-	char *s;
+	int len1, len2, maxLen;
+	int i = 0;
+	int o = 0;
+	char *ptr;
 
-	s = str_concat("Hello", NULL);
-	if (s == NULL)
+	len1 = strlen(s1);
+	len2 = strlen(s2);
+	maxLen = len1 + len2 + 1;
+
+	ptr = malloc(sizeof(char) * maxLen);
+
+	if (ptr == NULL)
 	{
-		printf("failed\n");
-		return (1);
+		free(ptr);
+		return (NULL);
 	}
-	printf("%s\n", s);
-	free(s);
 
-    s = str_concat(NULL, "Hello");
-	if (s == NULL)
+	while (i < len1)
 	{
-		printf("failed\n");
-		return (1);
+		ptr[i] = s1[i];
+		i++;
 	}
-	printf("%s\n", s);
-	free(s);
 
-    s = str_concat(NULL, NULL);
-	if (s == NULL)
+	while (o < len2)
 	{
-		printf("failed\n");
-		return (1);
+		ptr[i] = s2[o];
+		i++;
+		o++;
 	}
-	printf("%s\n", s);
-	free(s);
-
-	return (0);
+	ptr[i] = '\0';
+	return (ptr);
 }
-
