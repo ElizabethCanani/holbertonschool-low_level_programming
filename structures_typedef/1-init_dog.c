@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "dog.h"
 
 /**
  * init_dog - This function initialize a variable of type dog.
